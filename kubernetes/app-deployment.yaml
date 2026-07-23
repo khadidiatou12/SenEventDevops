@@ -21,7 +21,8 @@ spec:
       containers:
       - name: senevent
 
-        image: dijaka126/senevent:v1
+        
+        image: khadidiatou1105/seneventdevops:latest
 
         imagePullPolicy: Always
 

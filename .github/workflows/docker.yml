@@ -7,11 +7,9 @@ on:
 
 jobs:
   docker:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout source code
         uses: actions/checkout@v4
 
@@ -23,8 +21,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t dijaka126/senevent:latest .
+          docker build -t khadidiatou1105/seneventdevops:latest .
 
       - name: Push Docker Image
         run: |
-          docker push dijaka126/senevent:latest
+          docker push khadidiatou1105/seneventdevops:latest
