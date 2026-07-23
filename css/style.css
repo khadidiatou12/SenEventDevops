@@ -1,0 +1,213 @@
+/* ===== SenEvent — Feuille de style personnalisee ===== */
+
+:root {
+    --se-primary: #0d9488;      /* teal */
+    --se-primary-dark: #0f766e;
+    --se-accent: #f59e0b;       /* amber */
+    --se-dark: #1e293b;
+    --se-light: #f1f5f9;
+    --se-radius: 14px;
+}
+
+* { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+body {
+    background: var(--se-light);
+    color: var(--se-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background: linear-gradient(90deg, var(--se-primary-dark), var(--se-primary)) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: .5px;
+    font-size: 1.4rem;
+}
+.navbar .nav-link {
+    font-weight: 500;
+    border-radius: 8px;
+    padding: .4rem .8rem !important;
+    transition: background .2s;
+}
+.navbar .nav-link:hover {
+    background: rgba(255,255,255,.15);
+}
+
+/* --- Container principal qui pousse le footer en bas --- */
+.container.mt-4 { flex: 1; }
+
+/* --- Hero --- */
+.se-hero {
+    background: linear-gradient(135deg, var(--se-primary), var(--se-primary-dark));
+    color: #fff;
+    border-radius: var(--se-radius);
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(13,148,136,.3);
+    position: relative;
+    overflow: hidden;
+}
+.se-hero::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,.08);
+    border-radius: 50%;
+}
+.se-hero h1 { font-weight: 800; font-size: 2.8rem; }
+.se-hero p  { font-size: 1.2rem; opacity: .95; }
+
+/* --- Boutons --- */
+.btn-primary {
+    background: var(--se-primary);
+    border-color: var(--se-primary);
+    font-weight: 600;
+    border-radius: 10px;
+}
+.btn-primary:hover {
+    background: var(--se-primary-dark);
+    border-color: var(--se-primary-dark);
+}
+.btn-success {
+    background: var(--se-accent);
+    border-color: var(--se-accent);
+    font-weight: 600;
+    border-radius: 10px;
+}
+.btn-success:hover { background: #d97706; border-color: #d97706; }
+.se-hero .btn-primary { background: #fff; color: var(--se-primary-dark); border-color:#fff; }
+.se-hero .btn-primary:hover { background: var(--se-light); }
+.se-hero .btn-outline-secondary { color:#fff; border-color: rgba(255,255,255,.7); }
+.se-hero .btn-outline-secondary:hover { background:#fff; color: var(--se-primary-dark); }
+.btn { border-radius: 10px; }
+
+/* --- Cartes --- */
+.card {
+    border: none;
+    border-radius: var(--se-radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    transition: transform .2s, box-shadow .2s;
+    overflow: hidden;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+}
+.card-title { font-weight: 700; color: var(--se-primary-dark); }
+
+/* Bandeau colore en haut des cartes d'evenement */
+.event-card { border-top: 4px solid var(--se-primary); }
+.event-card .card-subtitle {
+    font-size: .85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+/* Icones "features" sur l'accueil */
+.feature-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(13,148,136,.1);
+    color: var(--se-primary);
+    border-radius: 50%;
+    font-size: 1.6rem;
+}
+
+/* --- Formulaires --- */
+.form-card {
+    background: #fff;
+    border-radius: var(--se-radius);
+    box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    padding: 2.5rem;
+}
+.form-control {
+    border-radius: 10px;
+    padding: .6rem .9rem;
+    border: 1px solid #cbd5e1;
+}
+.form-control:focus {
+    border-color: var(--se-primary);
+    box-shadow: 0 0 0 .2rem rgba(13,148,136,.2);
+}
+.form-label { font-weight: 600; color: var(--se-dark); }
+
+/* --- Badges roles --- */
+.badge-admin {
+    background: var(--se-accent);
+    color:#fff;
+    font-size:.7rem;
+    padding:.25rem .5rem;
+    border-radius:6px;
+}
+
+/* --- Tableau --- */
+.table { background:#fff; border-radius: var(--se-radius); overflow:hidden; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.table thead { background: var(--se-primary); color:#fff; }
+.table thead th { border:none; }
+
+/* --- Alertes --- */
+.alert { border-radius: 10px; border:none; }
+
+/* --- Footer --- */
+footer {
+    background: var(--se-dark);
+    color: #cbd5e1 !important;
+}
+footer a { color: var(--se-accent); }
+
+/* --- Titres de page --- */
+.page-title {
+    font-weight: 800;
+    color: var(--se-dark);
+    border-left: 5px solid var(--se-primary);
+    padding-left: .8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Ajouts : dashboard, images, badges categorie ===== */
+
+/* Cartes statistiques du tableau de bord */
+.stat-card { color:#fff; border:none; }
+.stat-card .card-body { border-radius: var(--se-radius); }
+.stat-teal  { background: linear-gradient(135deg, #0d9488, #0f766e); }
+.stat-blue  { background: linear-gradient(135deg, #2563eb, #1e40af); }
+.stat-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.stat-icon  { font-size: 2.4rem; opacity:.9; margin-bottom:.5rem; }
+.stat-number { font-size: 2.8rem; font-weight: 800; line-height:1; }
+.stat-label  { font-size: 1rem; opacity:.95; margin-top:.3rem; text-transform:uppercase; letter-spacing:1px; }
+.stat-card:hover { transform: translateY(-4px); }
+
+/* Image en haut des cartes d'evenement */
+.event-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: var(--se-radius);
+    border-top-right-radius: var(--se-radius);
+}
+.event-card { border-top: none; }
+
+/* Badge de categorie sur les cartes */
+.badge-cat {
+    background: rgba(13,148,136,.12);
+    color: var(--se-primary-dark);
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .25rem .6rem;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+/* Barre de recherche */
+.input-group-text { border-radius: 10px 0 0 10px; border-color:#cbd5e1; }

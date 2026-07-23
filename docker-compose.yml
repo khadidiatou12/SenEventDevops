@@ -1,0 +1,48 @@
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: senevent-web
+
+    restart: always
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - .:/var/www/html
+
+    depends_on:
+      - db
+
+    environment:
+      DB_HOST: db
+      DB_NAME: snevent
+      DB_USER: senevent
+      DB_PASS: password
+
+  db:
+    image: mysql:8.0
+
+    container_name: senevent-db
+
+    restart: always
+
+    ports:
+      - "3307:3306"
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: senevent
+      MYSQL_USER: senevent
+      MYSQL_PASSWORD: password
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/senevent.sql:/docker-entrypoint-initdb.d/senevent.sql:ro
+
+volumes:
+  mysql_data:
