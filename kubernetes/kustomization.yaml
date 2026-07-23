@@ -15,4 +15,5 @@ resources:
   - green-service.yaml
   - canary-deployment.yaml
   - canary-service.yaml
+  - canary-ingress.yaml
   - ingress.yaml

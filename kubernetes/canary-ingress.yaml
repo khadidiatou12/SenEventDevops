@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: senevent-canary-ingress
+  namespace: senevent
+
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - host: senevent.local
+
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+
+            backend:
+              service:
+                name: senevent-canary-service
+                port:
+                  number: 80
