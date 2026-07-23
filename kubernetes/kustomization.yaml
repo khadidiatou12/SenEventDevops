@@ -13,4 +13,6 @@ resources:
   - green-deployment.yaml
   - blue-service.yaml
   - green-service.yaml
+  - canary-deployment.yaml
+  - canary-service.yaml
   - ingress.yaml

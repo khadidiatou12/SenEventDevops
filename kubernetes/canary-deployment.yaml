@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: senevent-canary
+  namespace: senevent
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: senevent
+      version: canary
+
+  template:
+
+    metadata:
+      labels:
+        app: senevent
+        version: canary
+
+    spec:
+
+      containers:
+      - name: senevent
+
+        image: khadidiatou1105/seneventdevops:latest
+
+        ports:
+        - containerPort: 80
