@@ -9,22 +9,15 @@ spec:
   ingressClassName: nginx
 
   rules:
-  - host: senevent.local
+    - host: senevent.local
 
-    http:
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
 
-      paths:
-
-      - path: /
-
-        pathType: Prefix
-
-        backend:
-
-          service:
-
-            name: senevent-service
-
-            port:
-
-              number: 80
+            backend:
+              service:
+                name: senevent-blue-service
+                port:
+                  number: 80

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: senevent-green-service
+  namespace: senevent
+
+spec:
+  selector:
+    app: senevent
+    version: green
+
+  ports:
+    - port: 80
+      targetPort: 80
+
+  type: ClusterIP

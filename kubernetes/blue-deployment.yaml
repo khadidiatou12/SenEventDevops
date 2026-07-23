@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: senevent-blue
+  namespace: senevent
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: senevent
+      version: blue
+
+  template:
+    metadata:
+      labels:
+        app: senevent
+        version: blue
+
+    spec:
+      containers:
+      - name: senevent
+
+        image: khadidiatou1105/seneventdevops:latest
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: DB_HOST
+          value: mysql-service
+
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_DATABASE
+
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_USER
+
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD

@@ -9,4 +9,8 @@ resources:
   - mysql-service.yaml
   - app-deployment.yaml
   - app-service.yaml
+  - blue-deployment.yaml
+  - green-deployment.yaml
+  - blue-service.yaml
+  - green-service.yaml
   - ingress.yaml
