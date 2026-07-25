@@ -1,5 +1,18 @@
-<?php require 'config.php'; ?>
-<?php require 'includes/header.php'; ?>
+<?php
+require 'config.php';
+
+$file = __DIR__ . "/counter.txt";
+
+if (!file_exists($file)) {
+    file_put_contents($file, "0");
+}
+
+$count = (int) file_get_contents($file);
+$count++;
+file_put_contents($file, $count);
+
+require 'includes/header.php';
+?>
 
 <div class="se-hero mb-5">
   <h1>Bienvenue sur SenEvent</h1>

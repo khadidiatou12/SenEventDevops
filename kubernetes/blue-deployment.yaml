@@ -21,33 +21,34 @@ spec:
 
     spec:
       containers:
-      - name: senevent
+        - name: senevent
+          image: khadidiatou1105/seneventdevops:latest
+          imagePullPolicy: Always
 
-        image: khadidiatou1105/seneventdevops:latest
+          ports:
+            - containerPort: 80
 
-        imagePullPolicy: Always
+          env:
+            - name: DB_HOST
+              value: mysql-service
 
-        ports:
-        - containerPort: 80
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_DATABASE
 
-        env:
-        - name: DB_HOST
-          value: mysql-service
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
 
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: MYSQL_DATABASE
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
 
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: MYSQL_USER
-
-        - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: MYSQL_PASSWORD
+            - name: APP_VERSION
+              value: "blue"
