@@ -5,10 +5,15 @@ metadata:
   name: senevent-service
   namespace: senevent
 
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics.php"
+    prometheus.io/port: "80"
+
 spec:
   selector:
     app: senevent
-    version:  green
+    version: green
 
   ports:
     - protocol: TCP
