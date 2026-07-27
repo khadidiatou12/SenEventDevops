@@ -5,13 +5,19 @@ metadata:
   name: senevent-blue-service
   namespace: senevent
 
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics.php"
+    prometheus.io/port: "80"
+
 spec:
   selector:
     app: senevent
     version: blue
 
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 80
 
   type: ClusterIP
